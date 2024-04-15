@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios Laterais</title>
+</head>
+<body>
+    <div id="inserir">
+        <h1>Inserir Aulas</h1>
+        <form action="/aulas" method="post" enctype="multipart/form-data">
+            <label for="">Data</label><br>
+            <input type="date" name="data"><br>
+            <label for="">Hora Inicio</label><br>
+            <input type="time" name="hora_inicio"><br>
+            <label for="">Hora Fim</label><br>
+            <input type="time" name="hora_fim"><br>
+            <label for="">Turma</label><br>
+            <input type="text" name="turma"><br>
+            <label for="">Instrutor</label><br>
+            <input type="text" name="instrutor"><br>
+            <label for="">Unidade Curricular</label><br>
+            <input type="text" name="unidade_curricular"><br>
+            <label for="">Ambiente</label><br>
+            <input type="text" name="ambiente"><br>
+            <label for="">Tipo</label><br>
+            <input type="number" name="tipo"><br>
+            <label for="">Turno</label><br>
+            <input type="number" name="turno"><br>
+            <label for="">Código do Instrutor</label><br>
+            <input type="number" name="cod_instrutor"><br><br>
+            <label for="">Chave da Sala</label>
+            <input type="checkbox" name="chave_entregue">entregue<br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

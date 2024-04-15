@@ -1,0 +1,9 @@
+.primeiraDiv{
+    border: 5px solid red;
+    background-color: black;
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: auto;
+    padding: 20px;
+}

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.linha{
+    background-color: violet;
+}
+
+.linhaitem{
+    width: 33.333%;
+    height: 150px;
+    display: inline;
+    font-size: 40px;
+    margin: 5px;
+    
+}
+
+.linhaitem1{
+    background-color: blanchedalmond;
+}
+
+.linhaitem2{
+    background-color: aqua;
+}
+
+.linhaitem3{
+    background-color: brown;
+}
