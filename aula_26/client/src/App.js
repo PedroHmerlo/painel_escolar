@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import Navbar from './components/Navbar';
 import Cadastro from './views/Cadastro/Cadastro';
+import AddUsuario from './views/AdicionarUsuarios/index'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='sobrenos' element={<about/>}/>
         <Route path='cadastro' element={<Cadastro/>}/>
+        <Route path='/usuarios' element={<AddUsuario/>}/>
       </Routes>
     </BrowserRouter>  
   );
