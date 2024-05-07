@@ -26,6 +26,7 @@ routes.get("/sites", sites.index)
 routes.get("/usuarios",usuarios.index)
 
 
+
 routes.get("/sites/:id",sites.show)
 routes.get("/usuarios/:usuario_id", usuarios.show)
 
@@ -41,6 +42,7 @@ routes.put("/aulas/:id",aulas.update)
 
 routes.delete("/sites/:id", sites.destroy)
 routes.delete("/imagens/:id", imagens.destroy)
+routes.delete("/usuarios/:usuario_id", usuarios.destroy)
 
 
 
