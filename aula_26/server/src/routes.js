@@ -39,6 +39,7 @@ routes.post("/logar",usuarios.logar)
 routes.put("/sites/:id", sites.update)
 routes.put("/imagens/:id", imagens.update)
 routes.put("/aulas/:id",aulas.update)
+routes.put("/usuarios/:usuario_id",usuarios.update)
 
 routes.delete("/sites/:id", sites.destroy)
 routes.delete("/imagens/:id", imagens.destroy)

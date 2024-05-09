@@ -19,10 +19,9 @@ class UsuarioController{
         )
     }
 
-
     show(req, res){
-        let{ususario_id} = req.params
-        Usuario.mostrarTodos(ususario_id).
+        let{usuario_id} = req.params
+        Usuario.mostrarUsuario(usuario_id).
         then(
             resposta =>{
                 res.status(resposta[0]).json(resposta[1])
@@ -64,6 +63,24 @@ class UsuarioController{
             resposta =>{
                 console.debug(resposta)
                 res.status(resposta[0]).json(resposta[1])
+            }
+        )
+    }
+
+
+    update(req,res){
+        let{usuario_id} = req.params
+        let{nome, usuario, senha, usuario_tipo} = req.body
+
+        Usuario.atualizarUsuario(usuario_id, nome, usuario, senha, usuario_tipo).then(
+            resposta =>{
+                console.debug("Usuário atualizado com sucesso")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                console.debug(resposta)
+                res.status(resposta[0]).json("Erro: "+ resposta[1].errno)
             }
         )
     }
