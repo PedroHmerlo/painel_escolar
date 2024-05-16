@@ -1,18 +1,57 @@
 import {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import {jwtDecoded} from 'jwt-decode'
 
 function GestaoUsuarios() {
     //Estado para armazenar usuários
     const[usuarios, setUsuarios] = useState([])
+    const [nome, setNome] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
         document.title = "Gestão de usuários"
-        carregarUsuarios()
+        const  token = localStorage.getItem("token")
+        if(!token){
+            navigate("/logar")
+            alert("Efetue login")
+               
+        }else{
+            const decodedToken = jwtDecoded(token)
+            const {usuario_id} = decodedToken.usuario_id
+            carregarUsuarios(token)
+        }
     },[])
 
+    async function carregarNomeUsuario(usuario_id, token){
+        try {
+            const resposta = await fetch("/usuarios/"+usuario_id, {
+                headers:{
+                    'x-access-token':token
+                }
+            })
+
+            const dados = await resposta.json()
+            setNome(dados.nome)
+        } catch (error) {
+            
+        }
+    }
+
     //Função para carregar usuários
-    async function carregarUsuarios(){
+    async function carregarUsuarios(token ){
         try {
             //Faz a chamada para a API através do proxy
-            const resposta = await fetch('/usuarios')
+            const resposta = await fetch('/usuarios',{
+                headers:{
+                    'x-access-token':token
+                }
+            })
+
+            if(resposta.status === 401){
+                localStorage.removeItem('token')
+                alert("Usuário não atenticado")
+                navigate("/logar")
+            }
+
             if(!resposta){
                 throw new Error("Erro requisição:"+resposta.status)
             }else{  //Não é necessário o else
@@ -45,6 +84,7 @@ function GestaoUsuarios() {
 
   return (
     <div className='container'>
+        <h1>Bem-Vindo{nome}</h1>
         <h1>Gestão de Usuários</h1>
         <table className='table table-hover table-stiped'> 
             <tr>

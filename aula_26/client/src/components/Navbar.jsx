@@ -1,5 +1,5 @@
-import React from 'react'
-import estilo from './Navbar.css'
+        import React from 'react'
+        import estilo from './Navbar.css'
 
 
 function Navbar() {

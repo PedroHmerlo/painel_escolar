@@ -22,7 +22,7 @@ routes.get("/Inserir_aulas", (req, res)=>{
 
 routes.get("/imagens",imagens.index)
 routes.get("/sites", sites.index)
-// routes.get("/usuarios",usuarios.verificaToken,usuarios.index)
+routes.get("/usuarios",usuarios.verificaToken,usuarios.index)
 routes.get("/usuarios",usuarios.index)
 
 
