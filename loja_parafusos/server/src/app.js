@@ -17,3 +17,5 @@ app.get("/usuarios", Usuariocontroller.read)
 app.post("/usuarios", Usuariocontroller.create)
 app.put("/usuarios/:id_usuario", Usuariocontroller.update)
 app.delete("/usuarios/:id_usuario", Usuariocontroller.delete)
+
+app.post("/logar", Usuariocontroller.logar)
