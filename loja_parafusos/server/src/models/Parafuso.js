@@ -6,8 +6,8 @@ class Parafuso{
         this.conexao = mysql.createConnection(config.db)
     }
 
-    inserirParafuso(nome, id_categoria,){
-        let sql = `INSERT INTO parausos (nome, id_categoria) VALUE ("${nome}","${id_categoria}");`
+    inserirParafusos(nome_parafuso, id_categoria){
+        let sql = `INSERT INTO parafuso (nome_parafuso, id_categoria) VALUE ("${nome_parafuso}","${id_categoria}");`
 
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){
@@ -21,7 +21,7 @@ class Parafuso{
     }
 
     mostarParafusos(){
-        let sql = "SELECT * FROM parafusos"
+        let sql = "SELECT * FROM parafuso"
 
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){
@@ -34,7 +34,7 @@ class Parafuso{
     }
 
     atualizarParafusos(id_parafuso, nome, id_categoria){
-        let sql = `UPDATE parafusos SET nome="${nome}", id_categoria="${id_categoria}" WHERE id_parafuso="${id_parafuso}";`
+        let sql = `UPDATE parafuso SET nome="${nome}", id_categoria="${id_categoria}" WHERE id_parafuso="${id_parafuso}";`
 
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){
@@ -46,8 +46,8 @@ class Parafuso{
         })
     }
 
-    deletarParafuso(id_parafuso){
-        let sql = `DELETE FROM parafusos WHERE id_parafuso="${id_parafuso}";`
+    deletarParafusos(id_parafuso){
+        let sql = `DELETE FROM parafuso WHERE id_parafuso="${id_parafuso}";`
 
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){

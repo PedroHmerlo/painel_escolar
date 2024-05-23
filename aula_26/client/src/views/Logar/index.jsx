@@ -26,7 +26,7 @@ function Logar() {
 
             const dados = await resposta.json()
             localStorage.setItem('token', dados.token)
-            window.location.href = "gestaoUsuario"
+            window.location.href = "gestaoUsu"
         } catch (error) {
             console.error("Error ao fazer login", error)
         }

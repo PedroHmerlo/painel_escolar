@@ -40,8 +40,13 @@ class Usuario{
             this.conexao.query(sql, function(erro, retorno){
                 if(erro){
                     reject([400, erro])
+                }else{
+                    if(retorno["affectedRows"]>0){
+                        resolve([201, "Usuário atualizada"])
+                    }else{
+                        resolve([404, "Usuário não encontrada"])
+                    }
                 }
-                resolve([201, "usuario Atualizado"])
             })
         })
     }
@@ -53,14 +58,13 @@ class Usuario{
             this.conexao.query(sql, function(erro, retorno){
                 if(erro){
                     reject([400, erro])
-                }
-
-                if(retorno["affectedRows"]>0){
-                    resolve([201, "usuario deletado"])
                 }else{
-                    resolve([404, "usuario não encontrado"])
+                    if(retorno["affectedRows"]>0){
+                        resolve([201, "Usuário atualizada"])
+                    }else{
+                        resolve([404, "Usuário não encontrada"])
+                    }
                 }
-
             })
         })
     }

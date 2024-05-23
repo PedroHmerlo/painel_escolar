@@ -6,8 +6,8 @@ class Categoria{
         this.conexao = mysql.createConnection(config.db)
     }
 
-    inserirCategoria(nome){
-        let sql = `INSERT INTO categorias (nome) VALUE ("${nome}");`
+    inserirCategoria(nome_categoria){
+        let sql = `INSERT INTO categorias (nome_categoria) VALUE ("${nome_categoria}");`
 
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){
@@ -20,7 +20,7 @@ class Categoria{
 
     }
 
-    mostarCategorias(){
+    mostrarCategorias(){
         let sql = "SELECT * FROM categorias"
 
         return new Promise((resolve, reject)=>{
@@ -33,15 +33,20 @@ class Categoria{
         })
     }
 
-    atualizarCategorias(nome, id_categoria){
-        let sql = `UPDATE categorias SET nome="${nome}" WHERE id_categoria="${id_categoria}";`
-
+    atualizarCategorias(id_categoria, nome_categoria){
+        let sql = `UPDATE categorias SET nome_categoria ="${nome_categoria}" WHERE id_categoria="${id_categoria}";`
+        console.debug(sql)
         return new Promise((resolve, reject)=>{
             this.conexao.query(sql, function(erro, retorno){
                 if(erro){
                     reject([400, erro])
+                }else{
+                    if(retorno["affectedRows"]>0){
+                        resolve([201, "Categoria atualizada"])
+                    }else{
+                        resolve([404, "Categoria não encontrada"])
+                    }
                 }
-                resolve([201, "Categoria Atualizado"])
             })
         })
     }
@@ -53,14 +58,13 @@ class Categoria{
             this.conexao.query(sql, function(erro, retorno){
                 if(erro){
                     reject([400, erro])
-                }
-
-                if(retorno["affectedRows"]>0){
-                    resolve([201, "Categoria deletada"])
                 }else{
-                    resolve([404, "Categoria não encontrada"])
+                    if(retorno["affectedRows"]>0){
+                        resolve([201, "Categoria deletada"])
+                    }else{
+                        resolve([404, "Categoria não encontrada"])
+                    }
                 }
-
             })
         })
     }

@@ -1,23 +1,23 @@
 import {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import {jwtDecoded} from 'jwt-decode'
+import {jwtDecode} from 'jwt-decode'    
 
 function GestaoUsuarios() {
     //Estado para armazenar usuários
     const[usuarios, setUsuarios] = useState([])
-    const [nome, setNome] = useState([])
+    const [nome, setNome] = useState('')
     const navigate = useNavigate()
     useEffect(()=>{
         document.title = "Gestão de usuários"
         const  token = localStorage.getItem("token")
         if(!token){
             navigate("/logar")
-            alert("Efetue login")
-               
+            alert("Efetue login")     
         }else{
-            const decodedToken = jwtDecoded(token)
+            const decodedToken = jwtDecode(token)
             const {usuario_id} = decodedToken.usuario_id
             carregarUsuarios(token)
+            carregarNomeUsuario(usuario_id,token)
         }
     },[])
 
@@ -74,7 +74,7 @@ function GestaoUsuarios() {
                     throw new Error("Falha ao deletar usuário")
 
                 }
-                carregarUsuarios()
+                //carregarUsuarios(token)
             } catch (error) {
                 console.error("Erro ao deletar usuários:", error)
             }
